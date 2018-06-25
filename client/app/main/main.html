@@ -1,0 +1,47 @@
+<section class="Login">
+  <div class="container" style="text-align: -webkit-center;">
+    <div class="row"style="display: flex;flex-direction: column;    margin-top: 8%;">
+      <div class="col-lg-12">
+        <h2 class="Login-title text-center">Iniciar Sesión</h2>
+      </div>
+      <div class="col-lg-12 Login-formContainer">
+        <div class="Login-containerForm">
+          <form name="formLogin" class="" ng-submit="formLogin.$valid && vm.login()" novalidate>
+
+            <md-input-container flex="100" class="col-xs-12" ng-model="vm.user.correoUsuario">
+              <label class="Login-label" >Correo Electrónico</label>
+              <input type="email" name="email" ng-model="vm.user.correoUsuario" class="Login-input" ng-pattern="/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i" required>
+              <div ng-messages="formLogin.correoUsuario.$error" ng-show="formLogin.correoUsuario.$dirty">
+                <div ng-message="pattern">
+                  <p>Ingrese un email valido</p>
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-input-container flex="100" class="col-xs-12">
+              <label class="Login-label" >Contraseña</label>
+              <input required name="clientName" type="password"  id="password1"class="Login-input" ng-model="vm.user.contraUsuario">
+
+            </md-input-container>
+
+            <div class="Login-passwordView col-xs-12 form-group">
+              <input type="checkbox" onchange="document.getElementById('password1').type = this.checked ? 'text' : 'password'">
+              <label for="">Ver contraseña</label>
+            </div>
+
+            <div class="col-xs-12 Login-informationContainer">
+              <a  href="recoverPassword" >¿Olvidaste tu contraseña?</a>
+              <a  href="user-create" >¿No tienes cuenta?</a>
+            </div>
+            <div class="Login-containerButton" style="text-align: -webkit-center;">
+              <button type="submit" class="Login-button btn btn-primary ">Iniciar</button>
+            </div>
+
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

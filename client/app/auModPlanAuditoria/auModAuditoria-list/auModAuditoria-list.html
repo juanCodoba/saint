@@ -1,0 +1,128 @@
+<section>
+        <!--mod-admin-auditor-->
+        <div class="container " style="width:100%">
+            <div class="row">
+                <div class=" col-xs-3 vertical-menu" style="padding: 0%;width: 14%;">
+                    <a href="#" class="active">Principal</a>
+                    <a href="auModAuditoria-crear">Crear Plan De Auditoria</a>
+                    <a href="#">Plan De Auditoria Anual</a>
+                    <a href="#">Periodos De Auditoria</a>
+                    <a href="#">Crear Programas De Auditoria</a>
+                </div>
+                <!--list AuPlan-auditoria-->
+                <div class="col-xs-9" style="padding: -1px; width: 85%;">
+                    <div class="panel panel-default">
+    
+                        <div class="panel-heading">
+                            <h2 class="panel-title titulo" style="text-align: center">Planes De Auditoria</h2>
+                        </div>
+    
+                        <div class="panel-body panel-body-table">
+    
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-actions">
+                                    <thead>
+                                        <tr>
+                                            <th class="create-form-paln-auditoria" width="50">id</th>
+                                            <th class="create-form-paln-auditoria" width="50">Alcance Auditoria</th>
+                                            <th class="create-form-paln-auditoria" width="100">Esrado Auditoria</th>
+                                            <th class="create-form-paln-auditoria" width="100">tipo de Auditoria</th>
+                                            <th class="create-form-paln-auditoria" width="100">inicio de Auditoria</th>
+                                            <th class="create-form-paln-auditoria" width="100">fin de Auditoria</th>
+                                            <th class="create-form-paln-auditoria" width="100">actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in vm.planAuditoria | limitTo: vm.query.limit: (vm.query.page - 1) * vm.query.limit | filter: {tipoAuditoria:'Plan'}">
+                                            <td class="text-center">{{item.idPlanAuditoria}}</td>
+                                            <td>{{item.alcance}}</td>
+                                            <td>
+                                                {{item.estado}}
+                                            </td>
+                                            <td>{{item.tipoAuditoria}}</td>
+                                            <td>{{ item.fechaInicioAuditoria| date:'dd-MM-yyyy'}}</td>
+                                            <td>{{ item.fechaFinAuditoria| date:'dd-MM-yyyy'}}</td>
+    
+                                            <td>
+                                                <div class="center">
+                                                    <button class="btn btn-default btn-rounded btn-sm icons">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    <button class="btn btn-danger btn-rounded btn-sm icons" onClick="delete_row('trow_1');">
+                                                        <span class="fa fa-times"></span>
+                                                    </button>
+                                                    <button class="btn btn-info btn-rounded btn-sm icons" onClick="delete_row('trow_1');">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+    
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+    
+                        </div>
+                    </div>
+    
+                </div>
+                <div class="col-xs-9" style="padding: -1px; width: 85%;">
+                        <div class="panel panel-default">
+        
+                            <div class="panel-heading">
+                                <h2 class="panel-title titulo" style="text-align: center">Programa De Auditoria</h2>
+                            </div>
+        
+                            <div class="panel-body panel-body-table">
+        
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-actions">
+                                        <thead>
+                                            <tr>
+                                                <th class="create-form-paln-auditoria" width="50">id</th>
+                                                <th class="create-form-paln-auditoria" width="50">Alcance Auditoria</th>
+                                                <th class="create-form-paln-auditoria" width="100">Esrado Auditoria</th>
+                                                <th class="create-form-paln-auditoria" width="100">tipo de Auditoria</th>
+                                                <th class="create-form-paln-auditoria" width="100">inicio de Auditoria</th>
+                                                <th class="create-form-paln-auditoria" width="100">fin de Auditoria</th>
+                                                <th class="create-form-paln-auditoria" width="100">actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.planAuditoria | limitTo: vm.query.limit: (vm.query.page - 1) * vm.query.limit | filter: {tipoAuditoria:'Programa'}">
+                                                <td class="text-center">{{item.idPlanAuditoria}}</td>
+                                                <td>{{item.alcance}}</td>
+                                                <td>
+                                                    {{item.estado}}
+                                                </td>
+                                                <td>{{item.tipoAuditoria}}</td>
+                                                <td>{{ item.fechaInicioAuditoria| date:'dd-MM-yyyy'}}</td>
+                                                <td>{{ item.fechaFinAuditoria| date:'dd-MM-yyyy'}}</td>
+        
+                                                <td>
+                                                    <div class="center">
+                                                        <button class="btn btn-default btn-rounded btn-sm icons">
+                                                                <i class="fas fa-edit"></i>
+                                                            </button>
+                                                        <button class="btn btn-danger btn-rounded btn-sm icons" onClick="delete_row('trow_1');">
+                                                            <span class="fa fa-times"></span>
+                                                        </button>
+                                                        <button class="btn btn-info btn-rounded btn-sm icons" onClick="delete_row('trow_1');">
+                                                            <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
+        
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+        
+                            </div>
+                        </div>
+        
+                    </div>
+            </div>
+        </div>
+        <!-- END RESPONSIVE TABLES -->
+    </section>

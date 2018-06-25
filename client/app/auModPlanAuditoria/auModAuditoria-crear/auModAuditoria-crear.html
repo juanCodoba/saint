@@ -1,0 +1,157 @@
+<section>
+	<div class="container " style="width:100%">
+		<div class="row">
+			<div class="col-xs-4"  style="padding: 0" ;>
+				<div class="wrapper">
+					<!-- Sidebar -->
+					<nav id="sidebar">
+						<div class="sidebar-header">
+							<h3>Menu Principal Auditor</h3>
+						</div>
+
+						<ul class="list-unstyled components">
+							<li class="active" style="    margin-top: 10%;">
+								<a class="as aspe" href="auModAuditoria-list" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+									<i class="fa fa-dashboard" style="    margin: 1%;"></i>
+									<span>Principal</span>
+								</a>
+							</li>
+							<li style="    margin-top: 10%;">
+								<a class="as" href="#">
+									<i class="fa fa-file-excel-o" style="    margin: 1%;"></i>
+									<span>Crear Periodos</span>
+								</a>
+							</li>
+							<li style="    margin-top: 10%;">
+								<a class="as" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+									<i class="fa fa-th" style="    margin: 1%;"></i>
+									<span>Modulo Principal</span>
+								</a>
+							</li>
+
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+			<div>
+				<div class="col-xs-9" style="position: relative;left: 19%;width: 75%;padding: 0; ">
+					<form ng-submit=" vm.createAud()" novalidate>
+
+						<md-input-container class="md-block" required>
+							<label>Titulo</label>
+							<input ng-model="vm.planAuditoria.titulo" type="text" required>
+						</md-input-container>
+
+						<md-input-container class="md-block" required>
+							<label>Objetivo</label>
+							<input ng-model="vm.planAuditoria.objetivo" type="text" required>
+						</md-input-container>
+
+						<md-input-container class="md-block" required>
+							<label>Alcance</label>
+							<input ng-model="vm.planAuditoria.alcance" type="text" required>
+						</md-input-container>
+
+						<md-input-container class="md-block Periodo-createSelect" required>
+							<label>Periodo</label>
+							<md-select ng-model="vm.planAuditoria.idAuPeriodoPlanAuditoria.idAuPeriodoPlanAuditoria" required class="Periodo-createSelect">
+								<md-optgroup label="selecciona uno...">
+									<md-option ng-value="item.idAuPeriodoPlanAuditoria" ng-repeat="item in vm.periodoAuditoria"> {{item.anio}} </md-option>
+								</md-optgroup>
+							</md-select>
+						</md-input-container>
+
+						<md-input-container class="md-block " required>
+							<label>Criterios</label>
+							<input ng-model="vm.planAuditoria.criterios" type="text" required>
+						</md-input-container>
+
+						<md-input-container class="md-block Product-createSelect">
+							<label>Tipo De Auditoria</label>
+							<md-select ng-model="vm.planAuditoria.tipoAuditoria" required class="Product-createSelect">
+								<md-option value="" disabled selected>selecciona uno...</md-option>
+								<md-option value="Plan Control Auditorial  Calidad">Plan Control Auditorial Calidad</md-option>
+								<md-option value="Programa Control Auditoria  Interno">Programa Control Auditoria Interno</md-option>
+								<md-option value="Programa Auditoria Control Externo">Programa Auditoria Control Externo</md-option>
+							</md-select>
+						</md-input-container>
+
+						<div layout-gt-xs="row">
+							<div flex-gt-xs>
+								<h4>Inicio de Auditoria</h4>
+								<md-datepicker style="width: 30%" ng-model="vm.planAuditoria.fechaInicioAuditoria" md-placeholder="Inicio de Auditoria" md-open-on-focus></md-datepicker>
+							</div>
+							<div flex-gt-xs>
+								<h4>fin de Auditoria</h4>
+								<md-datepicker ng-model="vm.planAuditoria.fechaFinAuditoria" md-placeholder="fin de Auditoria" md-open-on-focus></md-datepicker>
+							</div>
+						</div>
+						<md-button type="submit" class="md-raised md-primary" style=" position: relative !important;left: 25%;margin-top: 2%;width: 20% !important;">Confirmar Sub</md-button>
+						<md-button type="submit" class="md-raised md-warn" style=" position: relative;left: 44% !important;margin-top: 2% !important;     width: 20% !important;">Cancelar</md-button>
+					</form>
+				</div>
+				<div class="col-xs-9" style="position: relative;left: 19%;width: 75%;padding: 0; border-color: #337ab7; ">
+					<div style="background-color:#337ab7">
+						<h2 style="font-family: 'Rambla', sans-serif; color: cornsilk">subproceso a auditar</h2>
+					</div>
+					<form name="supEvalu" ng-submit="vm.createAudSub()" novalidate>
+
+						<md-input-container class="md-block Subproceso-createSelect">
+							<label>Subproceso a Auditar</label>
+							<md-select ng-model="vm.procesoEvaluado.idProceso.idProceso" required class="Subproceso-createSelect">
+								<md-optgroup label="Subproceso">
+									<md-option ng-value="item.idProceso" ng-repeat="item in vm.subproceso">{{item.nombreSubproceso}}</md-option>
+								</md-optgroup>
+							</md-select>
+						</md-input-container>
+
+
+
+						<md-input-container class="md-block Subproceso-createSelect">
+							<label>Auditado</label>
+							<md-select ng-model="vm.procesoEvaluado.idAuditado.idAuditado" required class="Subproceso-createSelect">
+								<!-- <md-option value="" disabled selected>selecciona uno...</md-option> -->
+								<md-optgroup label="Selecciona uno ...">
+									<md-option ng-value="item.idUsuario" ng-repeat="item in vm.usuario">{{item.nombreUsuario}} {{item.apellidoUsuario}}
+								</md-optgroup>
+								</md-option>
+							</md-select>
+						</md-input-container>
+
+
+						<md-input-container>
+							<label>Auditores</label>
+							<md-select ng-model="vm.procesoEvaluado.usuarioList.idUsuario" md-on-close="clearSearchTerm()" data-md-container-class="selectdemoSelectHeader"
+							 multiple>
+								<md-select-header class="demo-select-header">
+									<input ng-model="searchTerm" type="search" placeholder="Busqueda R apidofor a vegetable.." class="demo-header-searchbox md-text">
+								</md-select-header>
+								<md-optgroup label="Auditores">
+									<md-option ng-value="item.idUsuario" ng-repeat="item in vm.usuario |
+										  filter:searchTerm">{{item.nombreUsuario}} {{item.apellidoUsuario}}</md-option>
+								</md-optgroup>
+							</md-select>
+						</md-input-container>
+						<div layout-gt-xs="row">
+							<div flex-gt-xs style="width: 30%; position:relative; left:19%">
+								<h4>Inicio de Auditoria</h4>
+								<md-datepicker  ng-model="vm.procesoEvaluado.fecha" md-placeholder="Inicio de Auditoria" md-open-on-focus></md-datepicker>
+							</div>
+							<div flex-gt-xs style="width: 30%; position:relative; left:8%">
+								<h4>fin de Auditoria</h4>
+								<md-datepicker  ng-model="vm.procesoEvaluado.fechaFin" md-placeholder="fin de Auditoria" md-open-on-focus></md-datepicker>
+							</div>
+						</div>
+						<md-button type="submit" class="md-raised md-primary" style=" position: relative;left: 41%;margin-top: 4%; "
+						 name="button">Confirmar Sub</md-button>
+					</form>
+				</div>
+			</div>
+
+
+			{{vm.procesoEvaluado}}
+			{{vm.planAuditoria}}
+		</div>
+	</div>
+</section>
